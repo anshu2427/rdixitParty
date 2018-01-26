@@ -1,0 +1,57 @@
+  
+ <!-- <link rel="stylesheet" href="/stylesheets/registration.css" > -->
+  <link rel="stylesheet" href="/stylesheets/BeatPicker.min.css"/>
+    <script src="/javascripts/jquery-1.11.0.min.js"></script>
+    <script src="/javascripts/BeatPicker.min.js"></script>
+<br><br><br><br>
+  <div class="container" style="width:700px">  
+  <form class="form-control" action="/registrationForm" method="post">
+   <div class="form-group border border-light rounded-top clearfix">
+     <h2>Registration form</h2>
+      {{#if hasErrors}}
+            <div class="alert alert-danger">
+                {{#each messages }}
+                    <p>{{this}}</p>
+                {{/each}}
+            </div>
+        {{/if}}
+     <hr class="featurette-divider">
+ 
+      <label for="fullname">Full Name:</label>
+      <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter Full Name"><br>
+   
+   
+      <label for="uniqueid">Unique Id No. :</label>
+      <input type="text" class="form-control" id="uniqueid" name="uniqueid" placeholder="Enter Anyone Unique Id Proof Number" required="qualification"><br>
+   
+      <label for="dob">Date of Birth:</label>
+         <div class="sample">
+        <input type="text" 
+               id="dob" 
+               name="dob"
+               placeholder="  DD/MM/YYYY"
+               data-beatpicker="true"
+               data-beatpicker-position="['right','bottom']"
+               data-beatpicker-format="['DD','MM','YYYY'],separator:'/'"
+               data-beatpicker-module="footer,clear"
+               required="dob"
+                /> </div>
+      <br>
+    
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"><br>
+
+      <label for="address">Address:</label>
+      <textarea type="text" class="form-control" id="address" name="address" placeholder="Enter Address"></textarea><br>
+      <label for="contact">Contact Number:</label>
+      <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter Contact Number">
+	  <br>
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+	    </div>
+
+  </form>
+
+    
+
+
+</div>
