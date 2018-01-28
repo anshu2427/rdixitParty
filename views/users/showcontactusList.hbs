@@ -1,0 +1,96 @@
+<link href="/stylesheets/dashboard.css" rel="stylesheet">
+<br><br><br><br>
+
+<div class="container-fluid">
+      <div class="row">
+ <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="/adminhome">Overview <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/addcover">Add Cover Photos &amp; News/Event</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/addcourse">Add New Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/addcenter">Add New Center</a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-pills flex-column">
+           
+            <li class="nav-item">
+              <a class="nav-link" href="/user/showregisters">Show All Registrations</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/shownews">Show News &amp; Event</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/showcenters">Show All Centers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/showcourse">Show All Courses</a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-pills flex-column">
+             <li class="nav-item">
+              <a class="nav-link" href="/user/uploadresult">Upload Result</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/showuploadresulta">Show Upload Result</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/showcontact">Show Contact Us </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/adminsettings">Admin Settings</a>
+            </li>
+          </ul>
+        </nav>
+
+
+
+        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+          <h2>Show Contact Us List</h2>
+ <section class="get">
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Mobile No</th>
+      <th scope="col">Email</th>
+      <th scope="col">Branch</th>
+      <th scope="col">Address</th>
+      <th scope="col">Feedback</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+       {{# each contactform1 }}
+
+    <tr>
+      <td>{{this.yourName}}</td>
+      <td>{{this.yourMobile}}</td>
+      <td>{{this.yourEmail}}</td>
+      <td>{{this.yourBranch}}</td>
+      <td>{{this.yourAddress}}</td>
+      <td>{{this.yourFeedback}}</td>
+       <td><a class="btn btn-danger delete-contact" role="button" href='#' data-id={{this._id}} >DELETE</a></td>
+    </tr>
+      {{/each}}
+
+  </tbody>
+
+</table>  
+</section>
+
+        </main>
+    
+
+      </div>
+    </div>
+
+

@@ -54,5 +54,23 @@
     <li class="nav-item">
       <a class="btn btn-md btn-danger" href="#">Donate </a>
     </li>
+      <li class="nav-item">
+  <button  class="btn btn-sm btn-dark disabled"></button>
+</li>
   </ul>  
+  <ul class="nav navbar-nav navbar-right">
+<div class="dropdown">
+           {{# if login  }}
+        <button type="button" class="btn btn-sm btn-light  dropdown-toggle" data-toggle="dropdown">
+           Logout </button>
+        <div class="dropdown-menu dropdown-menu-right">
+
+          <a class="btn btn-sm btn-success btn-block" href="/adminhome">ADMIN</a>
+         <a class="btn btn-sm btn-danger btn-block" href="/users/logout"> LOGOUT</a>
+
+         </div>
+          {{/if}}
+        </div>
+
+ </ul>
 </nav>
