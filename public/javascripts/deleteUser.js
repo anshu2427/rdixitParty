@@ -7,7 +7,7 @@
       url: '/adminsettings/'+id,
       success: function(response){
         alert('Deleting Registered Admin User');
-        window.location.href='/adminsettings';
+        window.location.href='/adminsetting';
       },
       error: function(err){
         console.log(err);

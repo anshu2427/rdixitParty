@@ -9,7 +9,7 @@ $(document).ready(function(){
       url: '/registers/'+id,
       success: function(response){
         alert('Deleting Registered User');
-        window.location.href='/users/showregisters';
+        window.location.href='/user/showregisters';
       },
       error: function(err){
         console.log(err);

@@ -10,7 +10,7 @@ var Contact = require('../models/contact');
 var Event = require('../models/event');
 
 
-var User = mongoose.User;
+//var User = mongoose.User;
 
 
 var storage = multer.diskStorage({
@@ -90,6 +90,8 @@ router.get('/shownews', isLoggedIn, function(req, res, next){
 			res.render('users/shownews', {coverers: doc , title: 'Show News / Cover Image'});
 	});
 });
+
+
 
 router.get('/addcover', isLoggedIn , function(req, res, next) {
  res.render('users/addcover', {title: 'Add Cover' });
@@ -201,13 +203,75 @@ errors = true;
 
  });
 
+ 
+
+
+
  router.get('/adminsettings', function(req, res, next) {
   res.render('users/adminsettings', {title: 'Admin Settings' });
 });
 
+
+router.get('/adminsetting',isLoggedIn, function(req, res, next){
+	User.find()
+	.then(function(doc){
+		res.render('users/adminsettings', {userers: doc , title: 'Show Registered Admin Users'});
+	});
+	});
+
 router.get('/adminhome', isLoggedIn, function(req, res, next) {
      res.render('users/adminhome' , {title: 'Admin Panel' });
   });
+
+
+
+router.delete('/shownews/:id',isLoggedIn, function(req, res){
+var query = {_id:req.params.id}
+
+	Event.remove(query, function(err){
+		if(err){
+			console.log(err);
+		}
+		res.send('Success');
+	});
+
+});
+
+router.delete('/showcontacts/:id',isLoggedIn, function(req, res){
+var query = {_id:req.params.id}
+
+	Contact.remove(query, function(err){
+		if(err){
+			console.log(err);
+		}
+		res.send('Success');
+	});
+
+});
+
+router.delete('/registers/:id',isLoggedIn, function(req, res){
+var query = {_id:req.params.id}
+
+	Register.remove(query, function(err){
+		if(err){
+			console.log(err);
+		}
+		res.send('Success');
+	});
+
+});
+
+router.delete('/adminsettings/:id',isLoggedIn, function(req, res){
+var query = {_id:req.params.id}
+
+	User.remove(query, function(err){
+		if(err){
+			console.log(err);
+		}
+		res.send('Success');
+	});
+
+});
 
 module.exports = router;
 

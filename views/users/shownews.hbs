@@ -61,7 +61,6 @@
       <th scope="col">News &amp; Event</th>
       <th scope="col">Cover Photo</th>
       <th scope="col">Active Status</th>
-      <th scope="col">Edit</th>
       <th scope="col">Delete</th>
     </tr>
   </thead>
@@ -76,8 +75,7 @@
       <td></td>
         {{/if}}
       <td>{{this.activeOrNot}}</td>
-       <td><a class="btn btn-primary" role="button" href='/shownews/{{this._id}}' >EDIT</a></td>
-       <td><a class="btn btn-danger delete-cover" role="button" href='#' data-id={{this._id}} >DELETE</a></td>
+      <td><a class="btn btn-danger delete-cover" role="button" href='#' data-id={{this._id}} >DELETE</a></td>
     </tr>
       {{/each}}
 

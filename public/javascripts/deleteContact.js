@@ -7,7 +7,7 @@ $(document).ready(function(){
       url: '/showcontacts/'+id,
       success: function(response){
         alert('Deleting Contactus List User');
-        window.location.href='/user/showcontact';
+        window.location.href='/users/showcontact';
       },
       error: function(err){
         console.log(err);

@@ -14,20 +14,20 @@ router.get('/logout', isLoggedIn, function(req, res, next) {
 });
 
 // change here
-router.get('/signup', function(req, res, next) {
+router.get('/signup',isLoggedIn, function(req, res, next) {
     var messages = req.flash('error');
-    res.render('users/signup', { messages: messages, hasErrors: messages.length > 0});
+    res.render('users/signup', {title: 'PSP Sign Up', messages: messages, hasErrors: messages.length > 0});
 });
 
 router.post('/signup', passport.authenticate('local.signup', {
-    successRedirect: '/adminhome',
+    successRedirect: '/adminsettings',
     failureRedirect: '/users/signup',
     failureFlash: true
 }));
 
 router.get('/signin', function(req, res, next) {
     var messages = req.flash('error');
-    res.render('users/signin', { title: 'UTEI Sign In' , messages: messages, hasErrors: messages.length > 0});
+    res.render('users/signin', { title: 'PSP Sign In' , messages: messages, hasErrors: messages.length > 0});
 });
 
 router.post('/signin', passport.authenticate('local.signin', {
