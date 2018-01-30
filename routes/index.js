@@ -45,13 +45,12 @@ var upload = multer({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('users/index', { title: 'Express' });
+	Event.find()
+	.then(function(doc){
+		  res.render('users/index', {coverers: doc, title: 'Prajatantrik Samajvadi Party' });
+
+		});
 });
-
-
- router.get('/index', function(req, res, next) {
- 	res.render('users/index', { title: 'Home page' });
- });
 
  router.get('/nationalLevel', function(req, res, next) {
  	res.render('users/nationalLevel', { title: 'National Level' });
@@ -171,15 +170,9 @@ router.post('/registrationForm', function(req, res, next){
  	const coverer = {
  		_id: new mongoose.Types.ObjectId(),
  		covertext: req.body.covertext,
- 		activeOrNot: req.body.activeOrNot
+ 		activeOrNot: req.body.activeOrNot,
+ 		coverphoto: req.file.path
  	};
-
-   if(req.file != "" && req.file != undefined){
-coverer.coverphoto = req.file.path;
-} 
-if(req.file != "" && req.file != undefined) {
-errors = true;
-}
 
  	req.checkBody('covertext', 'Enter cover news or event').notEmpty();
  	req.checkBody('activeOrNot', 'Enter image is active or not').notEmpty();
