@@ -1,0 +1,26 @@
+<br><br><br>
+<div class="container">
+	<br>
+	<div class="alert alert-success">
+       <strong><h1 class="text-center"><u>See All PSP Executives</u></h1></strong>
+    </div>
+	
+	<hr>
+	<br>
+<div class="row">
+	{{#each executiveModel}}
+ <div class="col-sm-4">
+  <div class="card" style="height:620px;">
+    <img class="card-img-top" src="{{this.execPhoto}} " alt="Card image" style="width:100%; height:340px;">
+    <div class="card-body">
+      <h4 class="card-title"><strong>{{this.execName}}</strong> </h4>
+       <h5 class="card-title"><b>Profile: </b>{{this.execPost}} </h5>
+      <p class="card-text"><b>About: </b>{{this.execDescription}} </p>
+    </div>
+  </div>
+  <br>
+ </div>
+   {{/each}}
+</div>
+</div>
+  <br><br><br>

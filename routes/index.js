@@ -8,6 +8,7 @@ var User = require('../models/user');
 var Register = require('../models/register');
 var Contact = require('../models/contact');
 var Event = require('../models/event');
+var Executive = require('../models/executive');
 
 
 //var User = mongoose.User;
@@ -68,6 +69,13 @@ router.get('/memberRegisteration', function(req, res, next) {
  	res.render('users/memberRegister', { title: 'Contact us' });
  });
 
+ router.get('/executives', function(req, res, next) {
+ 	Executive.find()
+ 	.then(function(doc){
+ 		 	res.render('users/executives', {executiveModel: doc , title: 'See Our Executives' });
+
+ 		 });
+ });
 
 router.get('/user/showregisters', isLoggedIn, function(req, res, next){
 	Register.find()
@@ -90,11 +98,22 @@ router.get('/shownews', isLoggedIn, function(req, res, next){
 	});
 });
 
-
+router.get('/showexecutives', isLoggedIn, function(req, res, next){
+	Executive.find()
+	.then(function(doc){
+			res.render('users/showexecutives', {executiveModel: doc , title: 'Show Executives'});
+	});
+});
 
 router.get('/addcover', isLoggedIn , function(req, res, next) {
  res.render('users/addcover', {title: 'Add Cover' });
 });
+
+
+router.get('/addexecutives', isLoggedIn , function(req, res, next) {
+ res.render('users/addexecutives', {title: 'Add Executives' });
+});
+
 
 // POST Method for contact us form
 
@@ -196,6 +215,41 @@ router.post('/registrationForm', function(req, res, next){
 
  });
 
+ /* admin post methods ADD Executive */
+
+
+ router.post('/users/addexecutives', upload.single('exePhoto') , function(req, res, next){
+
+ 	const executiveModels = {
+ 		_id: new mongoose.Types.ObjectId(),
+ 		execDescription: req.body.exeDescription,
+ 		execName: req.body.exeName,
+ 		execPost: req.body.exePost,
+ 		execPhoto: req.file.path
+ 	};
+
+ 	req.checkBody('exeName', 'Enter executive full name').notEmpty();
+ 	req.checkBody('exeDescription', 'Enter executive brief information').notEmpty();
+	console.log(req.body);
+ 	console.log(req.file);
+ 	var errors = req.validationErrors();
+ 	var messages = req.flash('error');
+
+ 	if (errors) {
+ 		var messages = [];
+ 		errors.forEach(function(error) {
+ 			messages.push(error.msg);
+ 		});
+
+ 		res.render('users/addexecutives', {  messages: messages , hasErrors: messages.length > 0});
+ 		return;
+ 	}
+
+ 	const executiveModels1 = new Executive(executiveModels);
+ 	executiveModels1.save(); 	
+ 	res.redirect('/addexecutives');  
+
+ });
  
 
 
@@ -222,6 +276,18 @@ router.delete('/shownews/:id',isLoggedIn, function(req, res){
 var query = {_id:req.params.id}
 
 	Event.remove(query, function(err){
+		if(err){
+			console.log(err);
+		}
+		res.send('Success');
+	});
+
+});
+
+router.delete('/showexecutives/:id',isLoggedIn, function(req, res){
+var query = {_id:req.params.id}
+
+	Executive.remove(query, function(err){
 		if(err){
 			console.log(err);
 		}

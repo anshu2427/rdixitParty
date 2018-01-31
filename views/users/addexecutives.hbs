@@ -1,9 +1,9 @@
-<link href="/stylesheets/dashboard.css" rel="stylesheet">
-<br><br><br>
+ <link href="/stylesheets/dashboard.css" rel="stylesheet">
+<br><br><br><br>
 
- <div class="container-fluid">
+  <div class="container-fluid">
       <div class="row">
-  <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+       <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
               <a class="nav-link active" href="/adminhome">Overview <span class="sr-only">(current)</span></a>
@@ -50,30 +50,39 @@
             </li>
           </ul>
         </nav>
-
         <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-          <h1 class="text-center"> Welcome &nbsp; to &nbsp; P S P &nbsp; Admin &nbsp; Panel</h1>
-            <br><br>
-          <section class="row text-center placeholders">
-            <div class="col-6 col-sm-4 placeholder">
-              <img src="/images/Spinning_Ashoka_Chakra.gif" width="150" height="150" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4></h4>
-           
+          <h2 class="text-center">Add Executives Informations </h2>
+         {{#if hasErrors}}
+            <div class="alert alert-danger">
+                {{# each messages }}
+                    <p>{{this}}</p>
+                {{/each}}
             </div>
-            <div class="col-6 col-sm-4 placeholder">
-              <img src="/images/Prajatantrik.png" width="450" height="450" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4></h4>
-            </div>
-            <div class="col-6 col-sm-4 placeholder">
-              <img src="/images/Spinning_Ashoka_Chakra.gif" width="150" height="150" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4></h4>
-            </div>
-          
-          </section>
+        {{/if}}
+		  <hr class="featurette-divider">
+
+         <form action="/users/addexecutives" enctype="multipart/form-data" method="post">
+   <div class="form-group border border-info rounded-top  clearfix">
+<br>  
+      <label for="exePhoto"><h5>&nbsp; Executive Photo :</h5>&nbsp;(Only supports jpeg, jpg or png format.)</label>
+      <input type="file" class="form-control" id="exePhoto" name="exePhoto"  placeholder="Enter Executive Photo">
+
+      <br>  
+      <label for="exeName"><h5>&nbsp; Executive Name :</h5></label>
+      <input type="text" class="form-control" id="exeName" name="exeName" placeholder="Enter Executive Full Name">
+
+      <br>  
+      <label for="exePost"><h5>&nbsp; Executive Post :</h5></label>
+      <input type="text" class="form-control" id="exePost" name="exePost" placeholder="Enter Executive Post Name">
+	  
+	  <br>
+	  <label for="exeDescription"><h5>&nbsp; Description:</h5></label>
+      <textarea type="text" class="form-control" id="exeDescription" name="exeDescription" placeholder="Enter Executive Brief Info"></textarea> 
+       
+	  <br>
+  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+	    </div>
+  </form>     
         </main>
       </div>
     </div>
-
-    <script language="JavaScript" type="text/javascript">
-    window.history.forward();              
- </script> 
