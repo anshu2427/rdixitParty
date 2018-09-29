@@ -65,6 +65,11 @@ router.get('/', function(req, res, next) {
  	res.render('users/contactus', { title: 'Contact us' });
  });
 
+  router.get('/donateus', function(req, res, next) {
+ 	res.render('users/donateus', { title: 'Donate us' });
+ });
+
+
 router.get('/memberRegisteration', function(req, res, next) {
  	res.render('users/memberRegister', { title: 'Contact us' });
  });
