@@ -90,7 +90,7 @@ app.use(function(err, req, res, next) {
 
 // Start Server
 app.listen(3020, function(){
-  console.log('Server started on port 5000...');
+  console.log('Server started on port 3020...');
 });
 
 module.exports = app;
